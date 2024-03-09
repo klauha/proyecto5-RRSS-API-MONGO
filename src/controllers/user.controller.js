@@ -3,7 +3,7 @@ import User from "../models/User.js"
 export const getUsers = async (req, res)=>{
     // RECUPERAR LA DATA
     try {
-        const users = await User.find()
+        const users = await User.find().select("-password")
         res.status(200).json ({
             success:true,
             message: "Users retrieved succesfully",
