@@ -30,14 +30,20 @@ const createPost = async (req, res) => {
 const deletePostById = async (req, res) => {
     try {
         const postId = req.params.postId
+        const userId = req.tokenData.userId
 
-        if (!postId) {
-            res.status(404).json({
-                succes: false,
-                message: "Post not found"
-            })
-        }
-        const postDeleted = await Post.findOneAndDelete(postId)
+        // if (!postId) {
+        //     res.status(404).json({
+        //         succes: false,
+        //         message: "Post not found"
+        //     })
+        // }
+        const postDeleted = await Post.findOneAndDelete({
+            postId:postId,
+            userId:userId
+        })
+
+
         res.status(200).json({
             success: true,
             message: "Post deleted",
