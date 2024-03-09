@@ -8,6 +8,7 @@ export const register = async (req, res) => {
 		const email = req.body.email;
 		const password = req.body.password;
 		const firstName= req.body.firstName
+		const lastName= req.body.lastName
 
 		if (password.length < 6 || password.length > 10) {
 			return res.status(400).json({
@@ -29,7 +30,8 @@ export const register = async (req, res) => {
 		const newUser = await User.create({
 			email: email,
 			password: passwordEncrypted,
-			firstName: firstName
+			firstName: firstName,
+			lastName: lastName
 		});
 
 		res.status(201).json({

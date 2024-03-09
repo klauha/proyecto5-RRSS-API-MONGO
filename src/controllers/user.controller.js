@@ -43,3 +43,48 @@ export const getProfile = async (req, res) => {
         })
     }
 }
+
+export const updateProfile = async (req, res) => {
+    try {
+        const userId = req.tokenData.userId
+        const firstName = req.body.firstName
+        const lastName = req.body.lastName
+
+        if (!userId) {
+            res.status(400).json(
+                {
+                    success:true,
+                    message: "userId required"
+                }   
+            )
+           }
+        
+    const profileToUpdate = await User.findOneAndUpdate(
+        {
+            _id: userId
+          },
+          {
+            firstName:firstName,
+            lastName: lastName
+          },
+        
+          {
+            new: true
+          }
+    )
+    res.status(200).json(
+        {
+          success: true,
+          message: "Profile updated",
+          data: profileToUpdate
+        }
+      )
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Profile can't be updated",
+            error: error.message
+        
+    })
+}
+}
