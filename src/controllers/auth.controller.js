@@ -7,6 +7,7 @@ export const register = async (req, res) => {
 	try {
 		const email = req.body.email;
 		const password = req.body.password;
+		const nickName = req.body.nickName
 		const firstName= req.body.firstName
 		const lastName= req.body.lastName
 
@@ -30,6 +31,7 @@ export const register = async (req, res) => {
 		const newUser = await User.create({
 			email: email,
 			password: passwordEncrypted,
+			nickName:nickName,
 			firstName: firstName,
 			lastName: lastName
 		});
@@ -94,6 +96,7 @@ export const login = async (req, res) => {
 			{
 				userId: user._id,
 				roleName: user.role,
+				
 			},
 			process.env.JWT_SECRET,
 			{
