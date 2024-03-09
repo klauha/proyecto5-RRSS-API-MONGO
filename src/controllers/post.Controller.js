@@ -39,8 +39,8 @@ const deletePostById = async (req, res) => {
         //     })
         // }
         const postDeleted = await Post.findOneAndDelete({
-            postId:postId,
-            userId:userId
+            postId: postId,
+            userId: userId
         })
 
 
@@ -55,7 +55,41 @@ const deletePostById = async (req, res) => {
             success: false,
             message: "Post cant be deleted",
             error: error,
-        });
+        })
+    }
+}
+
+const updatePost = async (req, res) => {
+    try {
+        const postId = req.params.postId
+        const userId = req.tokenData.userId
+        const content = req.body.content
+
+        const postToUpdate = await Post.findOneAndUpdate(
+            {
+                userId: userId,
+                postId: postId
+            },
+            {
+                content: content
+            },
+
+            {
+                new: true
+            }
+        )
+        res.status(200).json({
+            success: true,
+            message: "Post updated",
+            data: postToUpdate
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Post cant be updated",
+            error: error,
+        })
     }
 }
 
@@ -63,4 +97,4 @@ const deletePostById = async (req, res) => {
 
 
 
-export { createPost, deletePostById }
+export { createPost, deletePostById, updatePost }
