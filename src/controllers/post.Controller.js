@@ -93,8 +93,34 @@ const updatePost = async (req, res) => {
     }
 }
 
+const getMyPosts= async (req, res)=>{
+try {
+    const userId= req.tokenData.userId
+
+    const myPosts = await Post.find(
+        {
+            userId: userId
+        }
+    )
+    res.status(200).json({
+        success: true,
+        message: "Posts retrieved",
+        data: myPosts
+    })
+
+    
+} catch (error) {
+    res.status(500).json({
+        success: false,
+        message: "Post cant be retrieved",
+        error: error,
+    })
+}
+
+
+}
 
 
 
 
-export { createPost, deletePostById, updatePost }
+export { createPost, deletePostById, updatePost , getMyPosts}
