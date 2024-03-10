@@ -107,8 +107,7 @@ try {
         message: "Posts retrieved",
         data: myPosts
     })
-
-    
+  
 } catch (error) {
     res.status(500).json({
         success: false,
@@ -116,11 +115,28 @@ try {
         error: error,
     })
 }
+}
 
-
+const getPosts= async (req, res)=>{
+    try {
+       
+        const allPosts= await Post.find()
+        res.status(200).json({
+            success: true,
+            message: "Posts retrieved",
+            data: allPosts
+        })
+        
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Post cant be retrieved",
+            error: error.message,
+        })  
+    }
 }
 
 
 
 
-export { createPost, deletePostById, updatePost , getMyPosts}
+export { createPost, deletePostById, updatePost , getMyPosts, getPosts}
