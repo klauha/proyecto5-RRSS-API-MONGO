@@ -39,8 +39,8 @@ const deletePostById = async (req, res) => {
         //     })
         // }
         const postDeleted = await Post.findOneAndDelete(
-            {_id: postId},
-            {userId: userId}
+            { _id: postId },
+            { userId: userId }
         )
 
 
@@ -77,7 +77,7 @@ const updatePost = async (req, res) => {
                 new: true
             }
         )
-        console.log(postToUpdate);
+
         res.status(200).json({
             success: true,
             message: "Post updated",
@@ -164,13 +164,13 @@ const getPostById = async (req, res) => {
         })
     }
 }
-const getAllUserPosts= async (req, res) => {
+const getAllUserPosts = async (req, res) => {
     try {
         const userId = req.params.id
-   
-        const allUserPosts= await Post.find({userId}).populate("userId")
 
-        
+        const allUserPosts = await Post.find({ userId }).populate("userId")
+
+
         res.status(200).json({
             success: true,
             message: "Posts retrieved successfully",
@@ -185,6 +185,51 @@ const getAllUserPosts= async (req, res) => {
     }
 }
 
+const addLikes = async (req, res) => {
+    try {
+        const postId = req.body.postId
+        const userId = req.tokenData.userId
+
+        const post = await Post.findOne(
+            {
+                _id: postId
+            }
+        )
+        if (!post) {
+            return res.status(404).json(
+                {
+                    success: false,
+                    message: "No posts found for this user",
+                }
+            );
+        }
+        const postLiked = post.likes.includes(userId);
+        let responseMessage = "dislike succesfully"
+        if (postLiked) {
+            post.likes.pull(userId)
+        } else {
+            post.likes.push(userId)
+            responseMessage = "like succesfully"
+        }
+        // postLiked ?  post.likes.pull(userId) :  post.likes.push(userId)
+
+        await post.save()
+
+        res.status(200).json({
+            success: true,
+            message: responseMessage,
+            data: post
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Post cant be updated",
+            error: error.message,
+        })
+    }
+}
+
 
 export {
     createPost,
@@ -194,4 +239,5 @@ export {
     getPosts,
     getPostById,
     getAllUserPosts,
+    addLikes,
 }
