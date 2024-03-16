@@ -27,7 +27,7 @@ export const getUsers = async (req, res) => {
 export const getProfile = async (req, res) => {
     try {
         const userId = req.tokenData.userId
-        const profile = await User.findById(userId).select(["-password","-role"])
+        const profile = await User.findById(userId).select(["-password"])
 
         res.status(200).json({
             success: true,
