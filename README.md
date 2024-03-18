@@ -165,7 +165,7 @@ Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.
 
 ## Contacto
 
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:claudiaalvaro17@gmail.com)[![LinkedIn]claudia-alvaro-cano-47860538/)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:claudiaalvaro17@gmail.com)       [![LinkedIn](https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/claudia-%C3%A1lvaro-cano-47860538/)
 
 ## Créditos
 Este proyecto ha sido realizado por mi, Claudia Álvaro, como parte del Bootcamp Full Stack Developer de [![GeeksHubs Academy](https://img.shields.io/badge/GeeksHubs_Academy-%23F40D12?style=for-the-badge&color=%23F40D12)](https://geekshubsacademy.com/)
