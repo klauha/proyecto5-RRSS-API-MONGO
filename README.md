@@ -39,9 +39,9 @@ Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.
 <details>
 <summary> Endpoints </summary>
 
-- AUTH
+-AUTH
 
-    - REGISTER
+    -REGISTER
 
             POST api/auth/register
         body:
@@ -52,7 +52,7 @@ Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.
             }
     La contraseña debe tener  entre 6 y 10 carácteres
         
-    - LOGIN
+    -LOGIN
 
             POST api/auth/login
         body:
@@ -61,13 +61,13 @@ Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.
                 "password": "12345678"
             }
 
-        Usuarios creados:
+    Usuarios creados:
         SUPERADMIN:
-        email: superadmin@superadmin.com
-        password: 12345678
+            email: superadmin@superadmin.com
+            password: 12345678
         ADMIN: 
-        email: admin@admin.com
-        password: 12345678
+            email: admin@admin.com
+            password: 12345678
 
 -USERS
 
