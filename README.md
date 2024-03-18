@@ -1,5 +1,5 @@
 <div align=center>
-<image src="./img/redsocial" alt="Red Social">
+<image src="./img/redsocial.png" alt="Red Social">
 # Proyecto de Backend
 ## Red Social
 
@@ -35,7 +35,7 @@ Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.
 
 ## Endpoints
 ### localhost root url: http://localhost:4000/
-### deploy root url:
+### deploy root url: https://proyecto5-rrss-api-mongo-dev-bcmm.2.us-1.fl0.io
 <details>
 <summary> Endpoints </summary>
 
