@@ -145,7 +145,7 @@ const getPostById = async (req, res) => {
             _id: postId
             }
         )
-
+            console.log(post);
         // if (!post) {
         //     return res.status(404).json({
         //         success: false,
