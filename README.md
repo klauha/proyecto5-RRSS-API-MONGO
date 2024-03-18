@@ -1,9 +1,10 @@
 <div align=center>
-
+<image src="./redsocial" alt="Red Social">
 # Proyecto de Backend
-## Tattoo Studio
+## Red Social
 
- Este es el backend del sistema de gestion de citas de un estudio de tatuaje. Este proyecto se realizó como parte del Bootcamp Full Stack Developer de [![GeeksHubs Academy](https://img.shields.io/badge/GeeksHubs_Academy-%23F40D12?style=for-the-badge&color=%23F40D12)](https://geekshubsacademy.com/)
+ 
+En este proyecto, desarrollamos el backend de una red social utilizando MongoDB y Express. Permite el registro de usuarios, así como la gestión de sus cuentas y la creación de publicaciones con interacción. Este proyecto se realizó como parte del Bootcamp Full Stack Developer de [![GeeksHubs Academy](https://img.shields.io/badge/GeeksHubs_Academy-%23F40D12?style=for-the-badge&color=%23F40D12)](https://geekshubsacademy.com/)
 
 
 ## Tecnologías Utilizadas
@@ -21,41 +22,43 @@
 
 
 ## Diseño BBDD
-![Diseño BBDD](.//img/Captura%20de%20pantalla%202024-03-05%20223252.png)
+Se han usado dos colecciones, Users y Posts.
 
 ## Instalación en local
 Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
 
 1. Clonar el repositorio con el comando`$ git clone [URL del repositorio]`
 2. Instalar dependencias con el comando` $ npm install `
-3. Conectamos nuestro repositorio con nuestra base de datos, en el archivo ".env.example" tenemos un ejemplo, quitamos el ".example" y el archivo deberia quedar ".env", sustituimos valores con las credenciales de nuestra base de datos. El ultimo valor, seria el secreto de nuestro token.
-4. Ejecutamos las migraciones con el comando`$ npm run run-migrations`
-5. Ejecutamos los seeders `$ npm run seeder`
+3. Conectamos nuestro repositorio con nuestra base de datos en Mongo Atlas
+4. Ejecutamos los seeders `$ npm run seed`
 6. Ponemos en funcionamiento el servidor `$ npm run dev`
 
 ## Endpoints
+### localhost root url: http://localhost:4000/
+### deploy root url:
 <details>
 <summary> Endpoints </summary>
+
 - AUTH
 
     - REGISTER
 
-            POST http://localhost:4000/api/auth/register
+            POST api/auth/register
         body:
             {
-                "email": "paola@paola.com",
-                "password": "123456"
+                "email": "user@user.com",
+                "password": "12345678"
                 
             }
-    La contraseña debe tener 6 carácteres
+    La contraseña debe tener  entre 6 y 10 carácteres
         
     - LOGIN
 
-            POST http://localhost:4000/api/login
+            POST api/auth/login
         body:
             {
-                "email": "paola@paola.com",
-                "password": "123456"
+                "email": "user@user.com",
+                "password": "12345678"
             }
 
         Usuarios creados:
@@ -69,7 +72,7 @@ Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.
 -USERS
 
     -GET
-             GET http://localhost:4000/api/users
+             GET api/users
 
     El usuario tiene que ser super_admin para ver todos los usuarios
             
@@ -77,68 +80,74 @@ Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.
     -GET PROFILE
 
 
-        GET http://localhost:4000/api/users/profile
+        GET api/users/profile
 
     El usuario podrá ver su propio perfil
 
 
     - UPDATE PROFILE      
            
-        PUT http://localhost:4000/api/users/profile
+        PUT api/users/profile
 
     El usuario podrá modificar su propio perfil, cambiando los campos que considere necesario (excepto el email y contraseña):
             {
-                "firstName":"Daniel",
-                "lastName": "Tarazona"
+                "firstName":"Claudia",
+                "lastName": "Alvaro"
             }
+    -GET ALL POSTS BY ID
+        GET api/users/posts/{id}
+    
+    Es necesario introducir el id de un usuario por parámetro para poder ver todos los posts de ese usuario.
+
+-POSTS
 
 
--APPOINTMENTS
+    - CREATE POSTS
 
-
-    - CREATE APPOINTMENT
-
-            POST http://localhost:4000/api/auth//appointments
+            POST api/post
         body:
             {
-                "serviceId":3,
-                "appoinmentDate":"2024-03-05"
-  
+                "content": "Mi primer post"
             }
 
-    - GET SINGLE APPOINTMENT
+    - DELETE BY ID
 
-          GET http://localhost:4000/api/auth//appointments/id
+          DELETE api/post/{id}
 
-    El usuario puede ver una cita en concreto
+    El usuario puede borrar un post introduciendo por parámetro el id del post que desea eliminar.
 
 
-    - GET MY APPOINTMENTS
+    - UPDATE POST
 
-            GET http://localhost:4000/api/auth//appointments
-
-    El usuario puede ver todas las citas que tiene creadas
-
--SERVICES
-
-    -GET
-
-            GET http://localhost:4000/api/services
-
-    -POST SERVICE
-
-            POST http://localhost:4000/api/services
-
-            El usuario tiene que ser super_admin para crear servicios del estudio
-
-    -UPDATE SERVICE
-
-         PUT   http://localhost:4000/api/services
-
+            PUT api/post/{id}
+            body:
             {
-            "serviceName": "Restauración y rejuvenecimiento de trabajos ",
-            "description": "Nos especializamos en la restauración y rejuvenecimiento de tatuajes existentes. Nuestros expertos trabajan para mejorar y renovar tatuajes antiguos, devolviéndoles su vitalidad."
+                "content": "Mi post acualizado"
             }
+
+    El usuario puede modificar un post introduciendo por parámetro el id del post y por el body pasará el contenido a actualizar.
+
+
+    - GET MY POSTS
+
+            GET api/post/own
+
+    El usuarío puede obtener todos los posts que ha publicado.
+
+    - GET ALL POSTS
+
+            GET api/post
+
+    El usuario puede obtener todos los posts publicados en la red social.
+
+    - GET POST BY ID
+
+         PUT  api/post/{id}
+    
+    El usuario puede obtener todos los posts publicados por otro usuario, para ello pasamos por parámetro el id del usuario creador de los post que se quieren obtener.
+
+
+           
 
 
 
