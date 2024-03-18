@@ -1,5 +1,6 @@
 <div align=center>
 <image src="./img/redsocial.png" alt="Red Social">
+
 # Proyecto de Backend
 ## Red Social
 
