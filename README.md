@@ -144,10 +144,19 @@ Nota: Es necesario tener instalado [![NodeJS](https://img.shields.io/badge/node.
 
          PUT  api/post/{id}
     
-    El usuario puede obtener todos los posts publicados por otro usuario, para ello pasamos por parámetro el id del usuario creador de los post que se quieren obtener.
+    Recupera un post por su id.
+
+-LIKES
 
 
-           
+    - AGREGAR Y QUITAR LIKES A UN POST
+
+            PUT api/post/like
+        body:
+            {
+            "postId":"65f597ab7fde331076ddbe54"
+            }
+    Para dar like o quitarlo, pasaremos por body el id del post.
 
 
 
