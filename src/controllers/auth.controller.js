@@ -74,7 +74,7 @@ export const login = async (req, res) => {
 			email: email,
 		});
 
-		console.log(user);
+		
 
 		if (!user) {
 			res.status(400).json({
