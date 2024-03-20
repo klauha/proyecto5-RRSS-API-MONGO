@@ -198,7 +198,7 @@ const addLikes = async (req, res) => {
             {
                 _id: postId
             }
-        ).populate("")
+        )
         if (!post) {
             return res.status(404).json(
                 {
