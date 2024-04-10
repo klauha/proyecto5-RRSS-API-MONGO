@@ -2,14 +2,17 @@ import mongoose, { Schema, model } from "mongoose"
 
 const PostSchema = new Schema(
     {
-        content: {
-            type: String,
-            required: true,
-        },
-
         userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
+        },
+        urlImg: {
+            type: String,
+            required: true,
+        },
+        content: {
+            type: String,
+            required: true,
         },
 
         likes: [

@@ -6,11 +6,13 @@ const createPost = async (req, res) => {
 
         const userId = req.tokenData.userId
         const content = req.body.content
+        const urlImg = req.body.urlImg
 
         const newPost = await Post.create(
             {
                 userId: userId,
-                content: content
+                content: content,
+                urlImg: urlImg
             });
 
         res.status(201).json({

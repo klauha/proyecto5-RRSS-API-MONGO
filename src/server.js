@@ -1,10 +1,13 @@
 // importamos dependecias de librerias
 import express from "express";
 import 'dotenv/config'
+import cors from "cors"
 import { dbConnection } from "./database/db.js";
 import router from './routes/router.js'
 
 const app = express()
+
+app.use(cors())
 
 // parsea el body
 app.use(express.json())
