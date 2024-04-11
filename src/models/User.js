@@ -10,7 +10,7 @@ const UserSchema = new Schema(
       type: String,
       required: false,
     },
-    email: {
+    nickname: {
       type: String,
       required: true,
       unique: true,
@@ -18,8 +18,13 @@ const UserSchema = new Schema(
     password: {
       type: String,
       required: true,
-      
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+
     role: {
       type: String,
       enum: ["user", "admin", "super_admin"],

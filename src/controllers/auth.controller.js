@@ -7,7 +7,7 @@ export const register = async (req, res) => {
 	try {
 		const email = req.body.email;
 		const password = req.body.password;
-		const nickName = req.body.nickName
+		const nickname = req.body.nickname
 		const firstName= req.body.firstName
 		const lastName= req.body.lastName
 
@@ -31,7 +31,7 @@ export const register = async (req, res) => {
 		const newUser = await User.create({
 			email: email,
 			password: passwordEncrypted,
-			nickName:nickName,
+			nickname:nickname,
 			firstName: firstName,
 			lastName: lastName
 		});

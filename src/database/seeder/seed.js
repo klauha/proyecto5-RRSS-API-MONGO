@@ -19,27 +19,33 @@ const userSeeder = async () => {
                 email: "admin@admin.com",
                 password: bcrypt.hashSync('12345678', 10),
                 role: "admin",
+                nickname:"admin"
+                
             },
             {
                 email: "superadmin@superadmin.com",
                 password: bcrypt.hashSync('12345678', 10),
-                role: "super_admin"
+                role: "super_admin",
+                nickname:"Super"
             },
             {
                 email: "claudia@claudia.com",
                 password: bcrypt.hashSync('12345678', 10),
                 role: "user",
-                _id: userId1
+                _id: userId1,
+                nickname:"Clau"
             }, {
                 email: "paola@paola.com",
                 password: bcrypt.hashSync('12345678', 10),
                 role: "user",
-                _id: userId2
+                _id: userId2,
+                nickname:"Pao"
             }, {
                 email: "sofia@sofia.com",
                 password: bcrypt.hashSync('12345678', 10),
                 role: "user",
-                _id: userId3
+                _id: userId3,
+                nickname:"Sofi"
             },
 
         ]);
@@ -61,6 +67,7 @@ const postSeeder = async () => {
                 content: "Playa El Agua,Margaritapl",
                 userId: userId1,
                 urlImg:"https://breezili.com/_next/image?url=https%3A%2F%2Fuploadthing.com%2Ff%2F440c33ef-8b4d-47d0-a6be-d183607208b7_252515059_4901638859848528_4046791795114123450_n.jpg&w=1200&q=75"
+               
             },
             {
                 content: "Mochima, Venezuela",

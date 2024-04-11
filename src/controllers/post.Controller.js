@@ -103,7 +103,8 @@ const getMyPosts = async (req, res) => {
             {
                 userId: userId
             }
-        )
+        ).populate("userId", ['-password'])
+        
         res.status(200).json({
             success: true,
             message: "Posts retrieved",
