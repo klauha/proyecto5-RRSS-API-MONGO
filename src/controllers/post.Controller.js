@@ -128,7 +128,7 @@ const getPosts = async (req, res) => {
             success: true,
             message: "Posts retrieved",
             data: allPosts
-        })
+        }).populate("userId", ['-password'])
 
     } catch (error) {
         res.status(500).json({
@@ -147,15 +147,7 @@ const getPostById = async (req, res) => {
             {
             _id: postId
             }
-        )
-            console.log(post);
-        // if (!post) {
-        //     return res.status(404).json({
-        //         success: false,
-        //         message: "Post not found",
-        //       
-        //     })
-        // }
+        ).populate("userId", ['-password'])
 
         res.status(200).json({
             success: true,
@@ -175,7 +167,7 @@ const getAllUserPosts = async (req, res) => {
     try {
         const userId = req.params.id
 
-        const allUserPosts = await Post.find({ userId }).populate("userId")
+        const allUserPosts = await Post.find({ userId }).populate("userId", ['-password'])
 
 
         res.status(200).json({
