@@ -33,19 +33,25 @@ const userSeeder = async () => {
                 password: bcrypt.hashSync('12345678', 10),
                 role: "user",
                 _id: userId1,
-                nickname:"Clau"
+                nickname:"Clau",
+                firstName:"Claudia",
+                lastName:"Álvaro Cano"
             }, {
                 email: "paola@paola.com",
                 password: bcrypt.hashSync('12345678', 10),
                 role: "user",
                 _id: userId2,
-                nickname:"Pao"
+                nickname:"Pao",
+                firstName:"Paola",
+                lastName:" Tarazona Álvaro"
             }, {
                 email: "sofia@sofia.com",
                 password: bcrypt.hashSync('12345678', 10),
                 role: "user",
                 _id: userId3,
-                nickname:"Sofi"
+                nickname:"Sofi",
+                firstName:"Sofía",
+                lastName:" Tarazona Álvaro"
             },
 
         ]);

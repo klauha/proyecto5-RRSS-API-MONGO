@@ -41,10 +41,11 @@ const deletePostById = async (req, res) => {
         //     })
         // }
         const postDeleted = await Post.findOneAndDelete(
-            { _id: postId },
-            { userId: userId }
+            { 
+                _id: postId,
+                userId: userId 
+            }
         )
-
 
         res.status(200).json({
             success: true,
@@ -123,12 +124,12 @@ const getMyPosts = async (req, res) => {
 const getPosts = async (req, res) => {
     try {
 
-        const allPosts = await Post.find()
+        const allPosts = await Post.find().populate("userId", ['-password'])
         res.status(200).json({
             success: true,
             message: "Posts retrieved",
             data: allPosts
-        }).populate("userId", ['-password'])
+        })
 
     } catch (error) {
         res.status(500).json({
